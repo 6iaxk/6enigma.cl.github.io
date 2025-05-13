@@ -2,38 +2,45 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <title>Soon</title>
+  <title>6enigma.cl</title>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Roboto&display=swap" rel="stylesheet">
   <style>
     body {
       background-color: #000;
       color: white;
       margin: 0;
       padding: 0;
-      height: 100vh;
-      font-family: 'Georgia', serif;
+      font-family: 'Roboto', sans-serif;
+      overflow: hidden;
+    }
+
+    .container {
       display: flex;
       flex-direction: column;
-      justify-content: center;
       align-items: center;
-      position: relative;
     }
 
-    h1 {
-      font-size: 18rem;
-      margin: 0;
-      letter-spacing: 5px;
-    }
-
-    .footer {
-      position: absolute;
-      bottom: 20px;
+    .repeating-text {
       color: red;
-      font-size: 0.9rem;
+      text-align: center;
     }
   </style>
 </head>
 <body>
-  <h1>Soon</h1>
-  <div class="footer">6enigma.cl</div>
+  <div class="container">
+    <div id="repeater"></div>
+  </div>
+
+  <script>
+    const container = document.getElementById("repeater");
+    for (let i = 0; i < 100; i++) {
+      const line = document.createElement("div");
+      line.classList.add("repeating-text");
+      line.textContent = "6enigma.cl";
+      line.style.fontSize = `${1 - i * 0.008}rem`; // disminuye progresivamente
+      if (parseFloat(line.style.fontSize) <= 0) break; // evita fuentes invisibles
+      container.appendChild(line);
+    }
+  </script>
 </body>
 </html>
